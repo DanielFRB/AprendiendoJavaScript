@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios JavaScript Resueltos</title>
+</head>
+<body>
+  <h1>Ejercicios JavaScript Resueltos </h1>
+  <script>
+    // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    const contarCaracteres = (cadena = "") => 
+      (!cadena) 
+        ? console.warn("No ingresaste ninguna cadena de texto")
+        : console.info(`La Palabra "${cadena}", tiene ${cadena.length} caracteres`);
+    
+    contarCaracteres("Hola Mundo");
+    
+
+    // 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. 
+    //    miFuncion("Hola Mundo", 4) devolverá "Hola".
+    const textoRecortado = (cadena = "", longitud = undefined) => 
+      (!cadena) 
+        ? console.warn("No ingresaste ninguna cadena de texto")
+        : (longitud === undefined) 
+          ? console.warn("Non ingresaste la longitud para cortar el texto")
+          : console.info(cadena.slice(0, longitud));
+    
+    textoRecortado("Hola Mundo", 4);
+    
+
+    // 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. 
+    //    miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+    const cadenaAArray = (cadena = "", separador = undefined) => 
+      (!cadena)
+        ? console.warn("No ingresaste ninguna cadena de texto")
+        : (separador === undefined) 
+          ? console.warn("Non ingresaste el caracter separador")
+          : console.info(cadena.split(separador));
+    
+    cadenaAArray("Hola que tal me llamo Daniel", " ");
+
+
+    // 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+    const repetirTexto = (texto = "", veces = undefined) => {
+      if(!texto) { return(console.warn("No ingresaste ninguna cadena de texto")); };
+      if(veces === undefined) { return(console.warn("No ingresaste el numero de veces a repetir del texto")); };
+      if(veces === 0) { return(console.error("El numero de veces NO puede ser cero (0)")); };
+      if(Math.sign(veces) === -1) { return(console.error("El numero de veces NO puede ser negativo")); };
+
+      for(let i = 1; i <= veces; i++) { console.info(`${texto}, ${i}`) };
+    };
+
+    repetirTexto("Hola Mundo", 5);
+
+
+    // 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+    const cadenaReversa = (cadena = "") => 
+      (!cadena) 
+        ? console.warn("No ingresaste ninguna cadena de texto")
+        : console.info(cadena.split("").reverse().join(""));
+    
+    cadenaReversa("Hola Mundo");
+
+
+    // 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. 
+    //    miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+    const textoEnCadena = (cadena = "", texto = "") => {
+      if(!cadena) { return(console.warn("No ingresaste ninguna cadena de texto larga")); };
+      if(!texto) { return(console.warn("No ingresaste ninguna palabra a buscar")); };
+
+      let i = 0, contador = 0;
+
+      while(i !== -1) { i = cadena.indexOf(texto, i); if(i !== -1) { i++; contador++ }; };
+
+      return(console.info(`La palabra "${texto}", se repite ${contador} veces`));
+    };
+
+    textoEnCadena("Esto es un saludo que es un solo saludo", "saludo");
+
+
+    // 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. 
+    //    mifuncion("Salas") devolverá true.
+    const palindromo = (palabra = "") => {
+      if(!palabra) { return(console.warn("No ingresaste ninguna palabra")); };
+      palabra = palabra.toLocaleLowerCase();
+      let reverso = palabra.split("").reverse().join("")
+      return(palabra === reverso)
+        ? console.info(`Si es Palindromo, Palabra original ${palabra}, Palabra al reves ${reverso}`)
+        : console.warn(`No es Palindromo, Palabra original ${palabra}, Palabra al reves ${reverso}`);
+    };
+
+    palindromo("mango");
+    palindromo("Salas");
+
+
+    // 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. 
+    //    miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+    const eliminaPatronCaracteres = (texto = "", patron = "") => {
+      (!texto)
+        ? console.warn("No ingresaste ningun texto")
+        : (!patron) 
+          ? console.warn("Non ingresaste un patron de caracteres")
+          : console.info(texto.replace(new RegExp(patron, "ig"), ""));
+    };
+
+    eliminaPatronCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+
+    // 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+    const aleatorio = () => console.info(Math.round(Math.random() * 100) + 500);
+
+    aleatorio();
+
+
+    // 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. 
+    //     miFuncion(2002) devolverá true.
+    const capicua = (numero = undefined) => {
+      if(numero === undefined) { return(console.warn("No ingresaste ningun Numero")); };
+      if(typeof(numero) !== "number") { return(console.error(`El valor "${numero}" ingresado, No es un Numero`)); };
+      numero = numero.toString();
+      let reverso = numero.split("").reverse().join("");
+      return(numero === reverso)
+        ? console.info(`Si es Capicua, Numero original ${numero}, Numero al reves ${reverso}`)
+        : console.warn(`No es Capicua, Numero original ${numero}, Numero al reves ${reverso}`);
+    };
+
+    capicua(201102);
+
+
+    // 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el 
+    //     producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+    const factorial = (numero = undefined) => {
+      if(numero === undefined) { return(console.warn("No ingresaste ningun Numero")); };
+      if(typeof(numero) !== "number") { return(console.error(`El valor "${numero}" ingresado, No es un Numero`)); };
+      if(numero === 0) { return(console.error("El numero de veces NO puede ser cero (0)")); };
+      if(Math.sign(numero) === -1) { return(console.error("El numero de veces NO puede ser negativo")); };
+      let factorial = 1;
+      for(let i = numero; i > 1; i--) { factorial *= i };
+      return(console.info(`El factorial de ${numero} es: ${factorial}`));
+    };
+
+    factorial(5);
+
+
+    // 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. 
+    //     miFuncion(7) devolverá true.
+    const numeroPrimo = (numero = undefined) => {
+      if(numero === undefined) { return(console.warn("No ingresaste ningun Numero")); };
+      if(typeof(numero) !== "number") { return(console.error(`El valor "${numero}" ingresado, No es un Numero`)); };
+      if(numero === 0) {return(console.error("El numero de veces NO puede ser cero (0)"));};
+      if(Math.sign(numero) === -1) { return(console.error("El numero de veces NO puede ser negativo")); };
+      let divisible = false;
+      for(let i = 2; i < numero; i++) { if((numero % i) === 0) { divisible = true; break }; };
+      return(divisible)
+        ? console.info(`El numero ${numero}, NO es primo`)
+        : console.info(`El numero ${numero}, SI es primo`);
+    };
+
+    numeroPrimo(20);
+    numeroPrimo(17);
+
+
+    // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+    const numeroPar = (numero = undefined) => {
+      if(numero === undefined) { return(console.warn("No ingresaste ninguna Numero")); };
+      if(typeof(numero) !== "number") { return(console.error(`El valor "${numero}" ingresado, No es un Numero`)); };
+      if(numero === 0) {return(console.error("El numero de veces NO puede ser cero (0)"));};
+      return((numero % 2) === 0)
+        ? console.info(`El numero ${numero}, es Par`)
+        : console.info(`El numero ${numero}, es Impar`);
+    };
+
+    numeroPar(20);
+    numeroPar(5);
+
+
+    // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+    const convertirGrados = (grados = undefined, unidad = undefined) => {
+      if(grados === undefined) { return(console.warn("No ingresaste ningun Numero")); };
+      if(typeof(grados) !== "number") { return(console.error(`El valor "${grados}" ingresado, No es un Numero`)); };
+      if(unidad === undefined) { return(console.warn("NO ingresaste el tipo de grado a convertir")); };
+      if(typeof(unidad) !== "string") { return(console.error(`El valor de ${unidad} ingresado NO es valido`)); };
+      unidad = unidad.toUpperCase();
+      if((unidad.length !== 1) || !/(C|F)/.test(unidad)) { return(console.warn("Valor de unidad NO reconocido")); };
+      if(unidad === "C") { return(console.info(`${grados} grados Celcius son ${(grados * (9 / 5)) + 32} grados Fahrenheit`)); };
+      if(unidad === "F") { return(console.info(`${grados} grados Fahrenheit son ${(grados - 32) * (5 / 9)} grados Celcius`)); };
+    };
+
+    convertirGrados(30,"C");
+    convertirGrados(86,"F");
+
+
+    // 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+    const convertirBinarioDecimal = (numero = undefined, base = undefined) => {
+      if(numero === undefined) { return(console.warn("NO ingresaste ningun Numero")); };
+      if(typeof(numero) !== "number") { return(console.error(`El valor "${numero}" ingresado, NO es un Numero`)); };
+      if(base === undefined) { return(console.warn("NO ingresaste la base a convertir")); };
+      if(typeof(base) !== "number") { return(console.error(`El valor "${base}" ingresado, NO es un Numero`)); };
+      if(base === 2) { return(console.info(`${numero} base ${base} es igual a ${parseInt(numero, base)} base 10`)); }
+        else if(base === 10) { return(console.info(`${numero} base ${base} es igual a ${numero.toString(2)} base 2`)); }
+        else { return(console.error("El tipo de base a convertir NO es valido")); };
+    };
+
+    convertirBinarioDecimal(100101, 2);
+    convertirBinarioDecimal(37, 10);
+
+
+    // 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. 
+    //     miFuncion(1000, 20) devolverá 800.
+    const montoFinal = (monto = undefined, descuento = undefined) => {
+      if(monto === undefined) { return(console.warn("NO ingresaste ningun Monto")); };
+      if(monto === 0) { return(console.error("El Monto NO puede ser 0")); };
+      if(typeof(monto) !== "number") { return(console.error(`El valor "${monto}" ingresado, NO es un Numero`)); };
+      if(Math.sign(monto) === -1) { return(console.error("El Monto NO puede ser negativo")); };
+      if(descuento === undefined) { return(console.warn("NO ingresaste el descuento")); };
+      if(descuento === 0) { return(console.error("El Descuento NO puede ser 0")); };
+      if(typeof(descuento) !== "number") { return(console.error(`El valor "${descuento}" ingresado, NO es un Numero`)); };
+      if(Math.sign(descuento) === -1) { return(console.error("El descuento NO puede ser negativo")); };
+      return(console.info(`${monto} - ${descuento}% es igual a ${monto - ((monto * descuento) / 100)}`));
+    };
+
+    montoFinal(5000, 20);
+
+
+    // 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. 
+    //     miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+    const calcularAnnos = (fecha = undefined) => {
+      if(fecha === undefined) { return(console.warn("NO ingresaste la fecha")); };
+      if(!(fecha instanceof Date)) { return(console.error("El valor que ingresaste NO es una fecha")); };
+      let hoyMenosFecha = new Date().getTime() - fecha.getTime();
+      let annosEnMS = 1000 * 60 * 60 * 24 * 365;
+      let calculoDeAnnos = Math.floor(hoyMenosFecha / annosEnMS);
+      return(Math.sign(calculoDeAnnos) === -1)
+        ? console.info(`Faltan ${Math.abs(calculoDeAnnos)} annos para el ${fecha.getFullYear()}`)
+        : (Math.sign(calculoDeAnnos) === 1)
+          ? console.info(`Han pasado ${calculoDeAnnos} annos desde ${fecha.getFullYear()}`)
+          : console.info(`Estamos en el anno actual ${fecha.getFullYear()}`);
+    };
+
+    calcularAnnos(new Date(1977, 1, 14));
+
+    
+  </script>
+</body>
+</html>
