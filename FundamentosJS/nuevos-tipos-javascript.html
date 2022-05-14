@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevos Tipos de Datos Javascript</title>
+</head>
+<body>
+  <h1>Nuevos Tipos de Datos Javascript</h1>
+  <script>
+    // Symbol(), crea elementos privados dentro de un objeto y sus referencias van a ser unicas.
+    let id = Symbol('id');
+    let id2 = Symbol('id2');
+    console.log(id === id2);
+    console.log(id, id2);
+    console.log(typeof(id), typeof(id2));
+
+    const NOMBRE = Symbol("nombre");
+    const SALUDAR = Symbol("saludar");
+
+    const persona = {
+      [NOMBRE]: "Daniel"
+    };
+    console.log(persona);
+
+    persona.NOMBRE = "Daniel Rondon"
+    console.log(persona);
+    console.log(persona.NOMBRE);
+    console.log(persona[NOMBRE]);
+
+    persona[SALUDAR] = function () {
+      console.log(`Hola`);
+    };
+    console.log(persona);
+
+    for (let propiedad in persona) {
+      console.log(propiedad);
+      console.log(persona[propiedad]);
+    };
+    console.log(Object.getOwnPropertySymbols(persona));
+
+    // Set() Tipo de estructura iterable muy parecido al Array, que solo acepta valores unicos no repetidos.
+    const set = new Set([1,2,3,3,4,4,5,6,6,7,true,false,true,{},{},'daniel', 'Daniel']);
+    console.log(set);
+    console.log(set.size);
+
+    const set2 = new Set();
+    set2.add(1);
+    set2.add(2);
+    set2.add(3);
+    set2.add(3);
+    set2.add(4);
+    set2.add('hola');
+    console.log(set2);
+    console.log(set2.size);
+
+    console.log("Recorriendo set");
+    for (item of set) {
+      console.log(item);
+    };
+
+    console.log("Recorriendo set2");
+    set2.forEach(item => console.log(item));
+
+    // Los elementos individuales del tipo de dato Set NO pueden ser accesados directamente desde la variable (set) o (set2)
+    // debe crearse una nueva variable tipo Array desde la variable tipo Set() y asi luego poder acceder a los elementos individuales
+    let arr = Array.from(set);
+    console.log(arr);
+    console.log(`Primer elemento del arreglo es: ${arr[0]}`);
+
+    // Map() son objetos de tipo iterador que nos permiten almacenar conjunto de valores asociados a objetos muy similares al tipo de dato Object()
+    const mapa = new Map();
+    mapa.set('nombre', 'Daniel');
+    mapa.set('apellido', 'Rondon');
+    mapa.set('edad', 45);
+
+    console.log(mapa);
+    console.log(mapa.size);
+    console.log(mapa.has('correo'));
+    console.log(mapa.has('nombre'));
+    console.log(mapa.get('nombre'));
+
+    for (let [key, value] of mapa) {
+      console.log(`Llave: ${key}, Valor: ${value}`);
+    };
+
+    const mapa2 = new Map([
+      ['nombre', 'Gabriel'],
+      ['apellido', 'Rondon'],
+      ['edad', 39]
+    ]);
+    console.log(mapa2);
+
+    const llavesMapa2 = [... mapa2.keys()];
+    const valoresMapa2 = [... mapa2.values()];
+    console.log(llavesMapa2);
+    console.log(valoresMapa2);
+
+    // WeakSet() & WeakMap(), almacenan referencias debiles, las llaves deben ser tipo objeto. No son elementos iterables, No tienen propiedad size
+    const ws = new WeakSet();
+    let valor1 = {'valor1': 1};
+    let valor2 = {'valor2': 2};
+    let valor3 = {'valor3': 'Daniel'};
+
+    ws.add(valor1);
+    ws.add(valor2);
+    console.log(ws);
+    console.log(ws.has(valor1));
+    console.log(ws.has(valor3));
+    
+    ws.delete(valor2);
+    console.log(ws);
+
+    ws.add(valor2);
+    ws.add(valor3);
+    console.log(ws);
+
+    const wm = new WeakMap();
+    let llave1 = {};
+    let llave2 = {};
+    let llave3 = {};
+    let llave4 = {};
+
+    wm.set(llave1, 'Daniel');
+    wm.set(llave2, 'Rondon');
+    wm.set(llave3, 45);
+    console.log(wm);
+
+    console.log(wm.has(llave1));
+    console.log(wm.has(llave4));
+
+    console.log(wm.get(llave1));
+    console.log(wm.get(llave2));
+    console.log(wm.get(llave3));
+
+    // Iterable & Iterator
+    //const iterable = [1,2,3,4];
+    //const iterable = "Hola Mundo";
+    const iterable = new Set([1,2,3,3,4,4,5]);
+    //const iterable = new Map([['nombre', 'Daniel'], ['apellido', 'Rondon'], ['edad', 45]]);
+    //Se accede al iterador de la variable iterable.
+    const iterador = iterable[Symbol.iterator]();
+    console.log(iterable);
+    console.log(iterador);
+    
+    let next = iterador.next();
+    while (!next.done) {
+      console.log(next.value);
+      next = iterador.next();
+    };
+
+    // Generators, funciones que ayudan en la creacion de funciones asincronas NO bloqueantes.
+    function* iterablenew() {
+      yield "Hola";
+      console.log("Hola Consola");
+      yield "Hola 2";
+      console.log("Continuamos...");
+      yield "Hola 3";
+      yield "Hola 4";
+    };
+
+    let iterador1 = iterablenew();
+
+    for (let y of iterador1) {
+      console.log(y);
+    };
+
+    const arr3 = [... iterablenew()];
+    console.log(arr3);
+
+    function cuadrado(valor) {
+      setTimeout(() => { return(console.log({valor, resultado: valor * valor})) }, Math.random() * 1000);
+    };
+
+    function* generador() {
+      yield cuadrado(1);
+      yield cuadrado(2);
+      yield cuadrado(3);
+      yield cuadrado(4);
+      yield cuadrado(5);
+    };
+
+    let gen = generador();
+    // Asincronia NO bloqueante
+    for (let y of gen) {
+      console.log(y);
+    };
+
+    // Proxies es un nuevo mecanismo de JS que permite crear un objeto basado en un objeto literal inicial
+    const personaPro = {
+      nombre: '',
+      apellido: '',
+      edad: 0
+    };
+
+    const manejador = {
+      set(obj, prop, valor) {
+        if (Object.keys(obj).indexOf(prop) === -1) { return(console.error(`La Propiedad: "${prop}", no existe en el objeto personaPro`)); };
+        if ((prop === "nombre" || prop === "apellido") && !(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/g.test(valor))) { 
+          return(console.error(`La Propiedad: "${prop}", solo acepta letras y espacios en blanco`)); 
+        };
+        obj[prop] = valor;
+      }
+    };
+
+    const daniel = new Proxy(personaPro, manejador);
+    daniel.nombre = "Daniel";
+    daniel.apellido = "Rondon";
+    daniel.edad = 45;
+    daniel.twitter = "@danrond33";
+
+    console.log(daniel);
+
+    // Propiedades Dinámicas de los Objetos.
+    let aleatorio = Math.round(Math.random() * 100 + 5);
+    const objUsuarios = {
+      propiedad: 'Valor',
+      [`id_${aleatorio}`]: 'Valor Aleatorio'
+    };
+    const usuarios = ['Daniel', 'Danny', 'Gabriel', 'Oswaldo', 'Yaneth', 'Adelina'];
+    usuarios.forEach((usuario, index) => objUsuarios[`id_${index}`] = usuario);
+    console.log(objUsuarios);
+
+  </script>
+</body>
+</html>
