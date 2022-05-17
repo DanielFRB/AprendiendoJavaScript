@@ -468,7 +468,7 @@ $linkEventos.addEventListener("click", (e) => {
 
 */
 
-console.log("++++++++++ Delegación de Eventos ++++++++++");
+/*console.log("++++++++++ Delegación de Eventos ++++++++++");
 
 function flujoEventos(e) {
   console.log(
@@ -485,4 +485,4 @@ document.addEventListener("click", (e) => {
     alert("Hola soy tu amigo y docente digital... Jonathan MirCha");
     e.preventDefault();
   };
-});
+});*/
