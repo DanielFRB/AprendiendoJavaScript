@@ -4,6 +4,9 @@
   --font-size: 16px;
   --main-color: #F7DF1E;
   --second-color: #222222;
+  --main-btn-color: #002ead;
+  --second-btn-color: #00471b;
+  --disabled-btn-color: beige;
   --main-modal-color: rgba(247,222,30,0.85);
   --second-modal-color: rgba(34,34,34,0.85);
   --container-width: 1200px;
@@ -66,27 +69,24 @@ img {
   left: 0;
   right: 0;
   background-color: var(--second-modal-color);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.5s ease;
-  -webkit-transition: transform 0.3s ease, opacity 0.5s ease;
-  -moz-transition: transform 0.3s ease, opacity 0.5s ease;
-  -ms-transition: transform 0.3s ease, opacity 0.5s ease;
-  -o-transition: transform 0.3s ease, opacity 0.5s ease;
-  /*transform: translate(-100%,0);
+  transition: transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  -moz-transition: transform 0.3s ease;
+  -ms-transition: transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transform: translate(-100%,0);
   -webkit-transform: translate(-100%,0);
   -moz-transform: translate(-100%,0);
   -ms-transform: translate(-100%,0);
   -o-transform: translate(-100%,0);
-  */
 }
 
 .panel.is-active {
-  opacity: 1;
-  /*transform: translate(-100%,0);
-  -webkit-transform: translate(-100%,0);
-  -moz-transform: translate(-100%,0);
-  -ms-transform: translate(-100%,0);
-  -o-transform: translate(-100%,0);*/
+  transform: translate(0,0);
+  -webkit-transform: translate(0,0);
+  -moz-transform: translate(0,0);
+  -ms-transform: translate(0,0);
+  -o-transform: translate(0,0);
 }
 
 .panel-btn {
@@ -135,4 +135,33 @@ img {
   font-weight: bold;
   color: var(--second-color);
   background-color: var(--main-modal-color);
+}
+
+#reloj h3 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.reloj-alarma {
+  width: 160px;
+  height: 40px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  background-color: var(--main-btn-color);
+}
+
+.reloj-alarma:hover {
+  background-color: var(--second-btn-color);
+}
+
+.reloj-alarma.is-disabled {
+  text-decoration: line-through;
+  background-color: var(--disabled-btn-color);
+  cursor: none;
 }
