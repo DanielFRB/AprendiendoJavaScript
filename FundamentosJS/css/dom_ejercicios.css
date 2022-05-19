@@ -137,6 +137,7 @@ img {
   background-color: var(--main-modal-color);
 }
 
+/* ****** Reloj Digital y Alarma Sonora ****** */
 #reloj h3 {
   font-size: 40px;
   font-weight: bold;
@@ -164,4 +165,23 @@ img {
   text-decoration: line-through;
   background-color: var(--disabled-btn-color);
   cursor: none;
+}
+
+/* ****** Eventos del Teclado ****** */
+.stage {
+  display: flex;
+  min-height: 50vh;
+  background-color: var(--second-color);
+}
+
+.ball {
+  margin: auto;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: var(--main-color);
 }
