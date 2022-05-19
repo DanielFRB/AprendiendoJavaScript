@@ -29,7 +29,7 @@ export function alarm(sound, btnPlay, btnStop) {
     if (e.target.matches(btnPlay)) {
       alarmTempo = setTimeout(() => {
         $audio.play();
-      }, 2000);
+      }, 1000);
       d.querySelector(btnPlay).classList.toggle("is-disabled");
       e.target.disabled = true;
     };

@@ -155,6 +155,7 @@ img {
   font-size: 16px;
   margin: 5px;
   background-color: var(--main-btn-color);
+  transition:all 0.3s ease-out;
 }
 
 .reloj-alarma:hover {
@@ -162,8 +163,8 @@ img {
 }
 
 .reloj-alarma.is-disabled {
-  text-decoration: line-through;
-  background-color: var(--disabled-btn-color);
+  visibility: hidden;
+  opacity: 0;
   cursor: none;
 }
 
@@ -172,6 +173,10 @@ img {
   display: flex;
   min-height: 50vh;
   background-color: var(--second-color);
+}
+
+.stage.dark {
+  background-color: var(--main-color);
 }
 
 .ball {
@@ -184,4 +189,89 @@ img {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   background-color: var(--main-color);
+}
+
+.ball.dark {
+  background-color: var(--second-color);
+}
+
+/* ****** Cuenta Regresiva, ScrollTopButton, DarkModeButton ****** */
+.scroll-top-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  right: calc(4.25rem + 1vw);
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: var(--second-color);
+  font-size: 40px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition:all 0.3s ease-out;
+  -webkit-transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -ms-transition:all 0.3s ease-out;
+  -o-transition:all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.scroll-top-btn:hover {
+  background-color: rgba(247,222,30,0.65);
+  color: rgba(34,34,34,0.65);
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dark-mode-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  left: 1vw;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: var(--second-color);
+  font-size: 40px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition:all 0.3s ease-out;
+  -webkit-transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -ms-transition:all 0.3s ease-out;
+  -o-transition:all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.dark-mode-btn:hover {
+  background-color: var(--second-color);
+  color: var(--main-color)
+}
+
+.dark-mode {
+  background-color: var(--second-color);
+  color: var(--main-color);
 }
