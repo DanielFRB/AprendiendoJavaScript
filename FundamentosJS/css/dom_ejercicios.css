@@ -68,6 +68,7 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
+  overflow-y: auto;
   background-color: var(--second-modal-color);
   transition: transform 0.3s ease;
   -webkit-transition: transform 0.3s ease;
@@ -206,7 +207,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
+  padding: 0; 
   border: 0;
   outline: 0;
   cursor: pointer;
@@ -274,4 +275,80 @@ img {
 .dark-mode {
   background-color: var(--second-color);
   color: var(--main-color);
+}
+
+/* ****** Detección de Conexion de Red ****** */
+.online {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: var(--second-btn-color);
+  color: #ffffff;
+}
+
+.offline {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #b71c1c;
+  color: #ffffff;
+}
+
+/* ****** Detección de Camara WEB ****** */
+.btn-video {
+  width: 160px;
+  height: 40px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  color: white;
+  border: 0;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  background-color: var(--main-btn-color);
+  transition:all 0.3s ease-out;
+}
+
+.btn-video:hover {
+  background-color: var(--second-btn-color);
+}
+
+/* ****** Filtros de Busqueda ****** */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Define las columnas*/
+}
+
+.card {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card figcaption {
+  padding: 1rem;
+}
+
+.filter {
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
 }
