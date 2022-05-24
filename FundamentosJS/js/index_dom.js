@@ -11,6 +11,8 @@ import networkStatus from "./dom/deteccion_red.js";
 import webCam from "./dom/deteccion_webcam.js";
 import getLocalizacion from "./dom/deteccion_gps.js";
 import searchFilters from "./dom/filtro_busqueda.js";
+import slider from "./dom/carrusel.js";
+import scrollSpy from "./dom/scroll_espia.js";
 
 const d = document;
 
@@ -38,6 +40,8 @@ d.addEventListener("DOMContentLoaded", () => {
   webCam("webcam", "btn-start", "btn-stop");
   getLocalizacion("geolocation","get-location");
   searchFilters(".card-filter", ".card");
+  slider();
+  scrollSpy();
 });
 
 d.addEventListener("keydown", (e) => {
