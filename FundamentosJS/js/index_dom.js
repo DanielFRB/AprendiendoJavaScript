@@ -13,6 +13,7 @@ import getLocalizacion from "./dom/deteccion_gps.js";
 import searchFilters from "./dom/filtro_busqueda.js";
 import slider from "./dom/carrusel.js";
 import scrollSpy from "./dom/scroll_espia.js";
+import validarFormulario from "./dom/validar_formulario.js";
 
 const d = document;
 
@@ -42,6 +43,7 @@ d.addEventListener("DOMContentLoaded", () => {
   searchFilters(".card-filter", ".card");
   slider();
   scrollSpy();
+  validarFormulario();
 });
 
 d.addEventListener("keydown", (e) => {
