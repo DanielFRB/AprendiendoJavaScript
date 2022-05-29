@@ -1,0 +1,76 @@
+{
+  "libros": [
+    {
+      "nombre": "Don Quijote de la Mancha",
+      "autor": "Miguel de Cervantes",
+      "id": 1
+    },
+    {
+      "nombre": "El Retrato de Dorian Gray",
+      "autor": "Oscar Wilde",
+      "id": 2
+    },
+    {
+      "nombre": "Lo que el Viento se llevó",
+      "autor": "Margaret Mitchell",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "nombre": "1984",
+      "autor": "George Orwell"
+    },
+    {
+      "nombre": "Dune",
+      "autor": "Frank Herbert",
+      "id": 6
+    },
+    {
+      "nombre": "El Ultimo Mohicano",
+      "autor": "James Fenimore Cooper",
+      "id": 7
+    },
+    {
+      "nombre": "La Máquina del Tiempo",
+      "autor": "Herbert George Wells",
+      "id": 8
+    },
+    {
+      "nombre": "Soy Leyenda",
+      "autor": "Richard Matheson",
+      "id": 9
+    },
+    {
+      "nombre": "Yo, Robot",
+      "autor": "Isaac Asimov",
+      "id": 10
+    },
+    {
+      "nombre": "El juego de Ender",
+      "autor": "Orson Scott Card",
+      "id": 11
+    }
+  ],
+  "novelas": [
+    {
+      "id": 1,
+      "nombre": "El Prisionero de Zenda",
+      "autor": "Anthony Hope"
+    },
+    {
+      "id": 2,
+      "nombre": "Rupert de Hentzau",
+      "autor": "Anthony Hope"
+    },
+    {
+      "id": 3,
+      "nombre": "Cien años de Soledad",
+      "autor": "Gabriel García Márquez"
+    },
+    {
+      "id": 4,
+      "nombre": "Venezuela Heroica",
+      "autor": "Eduardo Blanco"
+    }
+  ]
+}
