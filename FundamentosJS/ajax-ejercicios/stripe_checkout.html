@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CheckOut con Stripe</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      font-family: sans-serif;
+      font-size: 16px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    .patacones {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .patacones>* {
+      flex: 1 1 200px;
+      margin: 1rem;
+    }
+
+    .patacon {
+      background-color: crimson;
+      color: chartreuse;
+      font-size: 125%;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3 ease-out;
+    }
+
+    .patacon:hover {
+      opacity: 0.9;
+      transform: scale(0.9);
+    }
+
+    .patacon img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .patacon figcaption {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>CheckOut con Stripe</h1>
+  <section id="patacones" class="patacones"></section>
+  <template id="patacon-template">
+    <figure class="patacon">
+      <img>
+      <figcaption></figcaption>
+    </figure>
+  </template>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="./assets/stripe-checkout.js" type="module"></script>
+</body>
+</html>
