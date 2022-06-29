@@ -1,11 +1,10 @@
 import api from './helpers/wp_api.js';
 import { ajax } from './helpers/ajax.js';
-import { Title } from './components/Title.js';
 import { Loader } from './components/Loader.js';
+import { Header } from './components/Header.js';
 
 export function App() {
   const d = document, $app = d.getElementById("app");
-  $app.appendChild(Title());
+  $app.appendChild(Header());
   $app.appendChild(Loader());
-  
 }
