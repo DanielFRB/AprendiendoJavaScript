@@ -46,6 +46,18 @@ img {
   background-color: #dc3545;
 }
 
+.error mark {
+  padding: 0.5rem;
+  display: inline-block;
+  color: #fff;
+  background-color: #01579b;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
 .grid-fluid {
   margin: 1rem auto;
   max-width: 90%;
