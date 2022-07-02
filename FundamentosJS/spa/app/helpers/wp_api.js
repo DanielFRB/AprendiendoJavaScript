@@ -16,4 +16,4 @@ export default {
   POST : POST,
   CATEGORIES : CATEGORIES,
   SEARCH : SEARCH
-}
+};

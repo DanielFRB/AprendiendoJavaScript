@@ -9,4 +9,4 @@ export function Header() {
   $header.appendChild(Menu());
   $header.appendChild(SearchForm());
   return $header;
-}
+};

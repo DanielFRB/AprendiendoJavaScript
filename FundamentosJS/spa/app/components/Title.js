@@ -5,4 +5,4 @@ export function Title() {
   $h1.innerHTML = `<a href="${api.DOMAIN}" target="_blank" rel="noopener">${api.NAME.toUpperCase()}</a>`;
 
   return $h1;
-}
+};

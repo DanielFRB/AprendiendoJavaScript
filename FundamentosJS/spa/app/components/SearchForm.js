@@ -6,4 +6,4 @@ export function SearchForm() {
   $input.placeholder = "Buscar..."
   $form.appendChild($input);
   return $form;
-}
+};

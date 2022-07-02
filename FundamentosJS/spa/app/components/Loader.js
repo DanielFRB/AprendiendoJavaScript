@@ -4,4 +4,4 @@ export function Loader() {
   $loader.alt = "Cargando...";
   $loader.classList.add("loader");
   return $loader;
-}
+};
