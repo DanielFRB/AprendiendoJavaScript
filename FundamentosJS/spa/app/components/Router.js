@@ -5,9 +5,7 @@ import { PostCard } from "./PostCard.js";
 import { SearchCard } from "./SearchCard.js";
 
 export async function Router() {
-  const d = document,
-    w = window,
-    $main = d.getElementById("main");
+  const d = document, w = window, $main = d.getElementById("main");
   
   let { hash } = location;
   $main.innerHTML = null;
