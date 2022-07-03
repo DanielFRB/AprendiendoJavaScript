@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes con Estado</title>
+</head>
+<body>
+  <h1>Componentes con Estado</h1>
+  <form id="todo-form">
+    <input type="text" id="todo-item", placeholder="Tarea por Hacer...">
+    <input type="submit" value="Agregar">
+  </form>
+  <h2>Lista de Tareas</h2>
+  <ul id="todo-list"></ul>
+  <script>
+    const d = document;
+    
+    const state = {
+      todoList : []
+    };
+
+    const setState = (obj) => {
+      for (let key in obj) {
+        if (template.data.hasOwnProperty(key)) {
+          template.data[key] = obj[key];
+        };
+      };
+      render();
+    };
+
+    const getState = () => JSON.parse(JSON.stringify(template.data));
+
+    const template = () => {
+      if (template.data.todoList.length < 1) return `<p><em>Lista sin Tareas pendientes</em></p>`;
+      let todos = template.data.todoList.map((item) => `<li>${item}</li>`).join("");
+      return todos;
+    };
+
+    template.data = {
+      todoList : []
+    };
+
+    const render = () => {
+      const $list = d.getElementById("todo-list");
+      if (!$list) return;
+      $list.innerHTML = template();
+    };
+
+    d.addEventListener("DOMContentLoaded", render);
+
+    d.addEventListener("submit", (e) => {
+      if (!e.target.matches("#todo-form")) return false;
+      e.preventDefault();
+      const $item = d.getElementById("todo-item");
+      if (!$item) return;
+      const lastState = getState();
+      lastState.todoList.push($item.value);
+      setState({ todoList : lastState.todoList });
+      $item.value = "";
+      $item.focus();
+    });
+  </script>
+</body>
+</html>
