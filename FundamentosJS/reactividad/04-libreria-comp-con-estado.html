@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libredia de Componentes de Estado</title>
+</head>
+<body>
+  <h1>Libredia de Componentes de Estado</h1>
+  <form id="todo-form">
+    <input type="text" id="todo-item", placeholder="Tarea por Hacer...">
+    <input type="submit" value="Agregar">
+  </form>
+  <h2>Lista de Tareas</h2>
+  <ul id="todo-list"></ul>
+  <script src="./Component.js"></script>
+  <script>
+    const d = document;
+    const app = new Component({
+      el : '#todo-list',
+      data : { todoList : [] },
+      template : function(proos) {
+        if (proos.todoList.length < 1) return `<p><em>Lista sin Tareas pendientes</em></p>`;
+        let todos = proos.todoList.map((item) => `<li>${item}</li>`).join("");
+        return todos;
+      }
+    });
+
+    d.addEventListener("DOMContentLoaded", app.render);
+
+    d.addEventListener("submit", (e) => {
+      if (!e.target.matches("#todo-form")) return false;
+      e.preventDefault();
+      const $item = d.getElementById("todo-item");
+      if (!$item) return;
+      const lastState = app.getState();
+      lastState.todoList.push($item.value);
+      app.setState({ todoList : lastState.todoList });
+      $item.value = "";
+      $item.focus();
+    });
+  </script>
+</body>
+</html>
